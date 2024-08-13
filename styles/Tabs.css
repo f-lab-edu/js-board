@@ -1,0 +1,26 @@
+.tabs {
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+.tabs a {
+  text-decoration: none;
+  padding: 10px 20px;
+  color: #6b7684;
+}
+
+.tabs a.active {
+  font-weight: bold;
+  border-bottom: 2px solid #000;
+  border-radius: 0px;
+  color: #000;
+}
+
+@media (min-width: 900px) {
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+}
+
+@media (max-width: 599px) {
+}

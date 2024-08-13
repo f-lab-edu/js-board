@@ -1,0 +1,26 @@
+.homeContainer {
+  width: 1200px;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+.homeContent {
+  padding: 0 24px;
+  text-align: center;
+}
+h2 {
+  width: 1010px;
+  background-color: #000;
+  color: #fff;
+  padding: 50px 20px;
+  border-radius: 10px;
+}
+@media (min-width: 900px) {
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+}
+
+@media (max-width: 599px) {
+}
