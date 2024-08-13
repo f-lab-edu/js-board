@@ -55,7 +55,7 @@
       <p>존재하지 않는 페이지 입니다.</p>
       <a href="/" data-link>홈 페이지로 이동</a>
     </section>
-  `,d={"/":()=>i("/"),"/development":()=>i("/development"),"/design":()=>i("/design"),"/mypage":v,"/404":g},l=u(d),y=e=>{const n=document.getElementById("app");n.innerHTML=e},c=e=>{const n=l.checkRoutes(e),r=d.hasOwnProperty(e)?`
+  `,d={"/js-board/":()=>i("/"),"/js-board/development":()=>i("/development"),"/js-board/design":()=>i("/design"),"/js-board/mypage":v,"/js-board/404":g},l=u(d),y=e=>{const n=document.getElementById("app");n.innerHTML=e},c=e=>{const n=l.checkRoutes(e),r=d.hasOwnProperty(e)?`
     ${p()}
     ${n()}
     ${h()}`:n();y(r)},b=()=>{document.addEventListener("DOMContentLoaded",()=>{c(window.location.pathname),document.body.addEventListener("click",e=>{e.target.matches("[data-link]")&&(e.preventDefault(),l.navigateTo(e.target.href))})}),window.addEventListener("popstate",()=>{c(window.location.pathname)})};b();
