@@ -17,8 +17,9 @@ const renderPage = (path) => {
   }
 };
 
+//history.replaceState(state, title, url) 같은 역할을 하지만, 히스토리 세션에 url을 쌓지않는다. 글 작성 후 완료했을때 사용
 const navigateTo = (url) => {
-  history.pushState(null, null, url);
+  history.pushState(null, null, url); //state, title(사용x), url
   renderPage(url);
 };
 
@@ -27,14 +28,6 @@ const App = () => {
 
   window.addEventListener('popstate', () => {
     renderPage(window.location.pathname);
-  });
-
-  // 예시: 버튼 클릭으로 페이지 이동 (테스트용)
-  document.body.addEventListener('click', (e) => {
-    if (e.target.matches('[data-link]')) {
-      e.preventDefault();
-      navigateTo(e.target.href);
-    }
   });
 };
 
