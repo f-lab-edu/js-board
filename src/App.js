@@ -1,3 +1,5 @@
+import createRouter from './router.js';
+
 //라우터 관련 코드 작성
 const routes = {
   '/': () => {
@@ -6,25 +8,27 @@ const routes = {
   '/mypage': () => {
     console.log('마이페이지 입니다.');
   },
+  '/404': () => {
+    console.log('찾을 수 없는 페이지 입니다.');
+  },
+};
+
+const router = createRouter(routes);
+
+const render = (content) => {
+  const container = document.getElementById('app');
+  container.innerHTML = content;
 };
 
 const renderPage = (path) => {
-  const pageMatchs = routes[path];
-  if (pageMatchs) {
-    pageMatchs();
-  } else {
-    console.log('페이지를 찾을 수 없습니다.');
-  }
-};
-
-//history.replaceState(state, title, url) 같은 역할을 하지만, 히스토리 세션에 url을 쌓지않는다. 글 작성 후 완료했을때 사용
-const navigateTo = (url) => {
-  history.pushState(null, null, url); //state, title(사용x), url
-  renderPage(url);
+  const viewFunction = router.checkRoutes(path);
+  render(viewFunction());
 };
 
 const App = () => {
-  renderPage(window.location.pathname);
+  document.addEventListener('DOMContentLoaded', () => {
+    renderPage(window.location.pathname);
+  });
 
   window.addEventListener('popstate', () => {
     renderPage(window.location.pathname);
