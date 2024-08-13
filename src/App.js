@@ -1,22 +1,17 @@
 import createRouter from './router.js';
 import { Header } from './components/Header.js';
 import { Footer } from './components/Footer.js';
+import { HomePage } from './pages/HomePage.js';
+import { MyPage } from './pages/MyPage.js';
+import { NotFoundPage } from './pages/NotFoundPage.js';
 
 //라우터 관련 코드 작성
 const routes = {
-  '/': () => {
-    console.log('메인 화면입니다.');
-    return '<h2>메인 화면</h2>';
-  },
-  '/mypage': () => {
-    console.log('마이페이지 입니다.');
-    return '<h2>마이페이지</h2>';
-  },
-  '/404': () => {
-    console.log('찾을 수 없는 페이지 입니다.');
-    return '<h2>404 - 페이지를 찾을 수 없습니다.</h2>';
-  },
+  '/': HomePage,
+  '/mypage': MyPage,
+  '/404': NotFoundPage,
 };
+
 const router = createRouter(routes);
 
 const render = (content) => {
