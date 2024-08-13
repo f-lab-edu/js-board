@@ -1,5 +1,6 @@
 import createRouter from './router.js';
 import { Header } from './components/Header.js';
+import { Footer } from './components/Footer.js';
 
 //라우터 관련 코드 작성
 const routes = {
@@ -31,7 +32,7 @@ const renderPage = (path) => {
     ? `
     ${Header()}
     ${viewFunction()}
-    `
+    ${Footer()}`
     : viewFunction();
   render(content);
 };
