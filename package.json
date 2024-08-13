@@ -4,6 +4,7 @@
   "description": "Vanila JS 및 FrontEnd Framework 이해도를 높이기 위한 Vanila JS SPA 웹 프로젝트입니다.",
   "main": "index.js",
   "scripts": {
+    "dev": "vite",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

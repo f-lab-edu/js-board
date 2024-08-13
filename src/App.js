@@ -7,7 +7,9 @@ import { NotFoundPage } from './pages/NotFoundPage.js';
 
 //라우터 관련 코드 작성
 const routes = {
-  '/': HomePage,
+  '/': () => HomePage('/'),
+  '/development': () => HomePage('/development'),
+  '/design': () => HomePage('/design'),
   '/mypage': MyPage,
   '/404': NotFoundPage,
 };
