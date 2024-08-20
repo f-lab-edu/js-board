@@ -1,12 +1,11 @@
 import { developmentBoardData, designBoardData } from '../util/dummyData';
 import '../../styles/ArticlePage.css';
-import { Header } from '../components/Header';
+import { Header, attachHeaderEvents } from '../components/Header';
 import { Footer } from '../components/Footer';
 
-export const ArticlePage = (id) => {
+export const ArticlePage = (id, router) => {
     const allPosts = [...developmentBoardData, ...designBoardData];
     const post = allPosts.find((post) => post.id === id);
-    console.log(post);
     if (!post) {
         // id에 해당하는 게시글이 없을 경우
         return `
@@ -17,7 +16,7 @@ export const ArticlePage = (id) => {
     </section>${Footer()}
     `;
     }
-
+    attachHeaderEvents(router);
     return `${Header()}
     <div class="article-container">
     <img src="${post.thumbnail}" alt="썸네일" class="article-image">

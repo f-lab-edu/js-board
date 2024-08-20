@@ -1,5 +1,5 @@
 import createRouter from './router.js';
-import { Header } from './components/Header.js';
+import { Header, attachHeaderEvents } from './components/Header.js';
 import { Footer } from './components/Footer.js';
 import { HomePage } from './pages/HomePage.js';
 import { MyPage } from './pages/MyPage.js';
@@ -12,7 +12,7 @@ const routes = {
     '/development': () => HomePage('/development', router),
     '/design': () => HomePage('/design', router),
     '/mypage': MyPage,
-    '/article/:id': (id) => ArticlePage(id),
+    '/article/:id': (id) => ArticlePage(id, router),
     '/404': NotFoundPage,
 };
 
@@ -34,6 +34,7 @@ const renderPage = (path) => {
     ${Footer()}`
         : viewFunction();
     render(content);
+    attachHeaderEvents(router);
 };
 
 const App = () => {
