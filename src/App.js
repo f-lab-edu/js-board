@@ -4,6 +4,7 @@ import { Footer } from './components/Footer.js';
 import { HomePage } from './pages/HomePage.js';
 import { MyPage } from './pages/MyPage.js';
 import { NotFoundPage } from './pages/NotFoundPage.js';
+import { ArticlePage } from './pages/ArticlePage.js';
 
 //라우터 관련 코드 작성
 const routes = {
@@ -11,6 +12,7 @@ const routes = {
     '/development': () => HomePage('/development'),
     '/design': () => HomePage('/design'),
     '/mypage': MyPage,
+    '/article/:id': (id) => ArticlePage(id),
     '/404': NotFoundPage,
 };
 
