@@ -4,6 +4,7 @@ import { Header, attachHeaderEvents } from '../components/Header';
 import { Footer } from '../components/Footer';
 
 export const ArticlePage = (id, router) => {
+    console.log('Received ID:', id);
     const allPosts = [...developmentBoardData, ...designBoardData];
     const post = allPosts.find((post) => post.id === id);
     if (!post) {

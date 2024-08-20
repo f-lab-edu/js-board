@@ -8,50 +8,17 @@ import { ArticlePage } from './pages/ArticlePage.js';
 
 //라우터 관련 코드 작성
 const routes = {
-    '/': () => HomePage('/', router),
+    '/': {
+        header: () => Header(),
+        footer: () => Footer(),
+        attachHeaderEvents: () => attachHeaderEvents(router),
+        render: () => HomePage('/', router),
+    },
     '/development': () => HomePage('/development', router),
     '/design': () => HomePage('/design', router),
     '/mypage': MyPage,
     '/article/:id': (id) => ArticlePage(id, router),
     '/404': NotFoundPage,
 };
-
 const router = createRouter(routes);
-
-const render = (content) => {
-    const container = document.getElementById('app');
-    container.innerHTML = content;
-};
-
-const renderPage = (path) => {
-    const viewFunction = router.checkRoutes(path);
-    const isDefinedRoute = routes.hasOwnProperty(path);
-
-    const content = isDefinedRoute
-        ? `
-    ${Header()}
-    ${viewFunction()}
-    ${Footer()}`
-        : viewFunction();
-    render(content);
-    attachHeaderEvents(router);
-};
-
-const App = () => {
-    document.addEventListener('DOMContentLoaded', () => {
-        renderPage(window.location.pathname);
-
-        document.body.addEventListener('click', (e) => {
-            if (e.target.matches('[data-link]')) {
-                e.preventDefault();
-                router.navigateTo(e.target.href);
-            }
-        });
-    });
-
-    window.addEventListener('popstate', () => {
-        renderPage(window.location.pathname);
-    });
-};
-
-App();
+router.init();
