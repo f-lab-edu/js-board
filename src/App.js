@@ -8,9 +8,9 @@ import { ArticlePage } from './pages/ArticlePage.js';
 
 //라우터 관련 코드 작성
 const routes = {
-    '/': () => HomePage('/'),
-    '/development': () => HomePage('/development'),
-    '/design': () => HomePage('/design'),
+    '/': () => HomePage('/', router),
+    '/development': () => HomePage('/development', router),
+    '/design': () => HomePage('/design', router),
     '/mypage': MyPage,
     '/article/:id': (id) => ArticlePage(id),
     '/404': NotFoundPage,

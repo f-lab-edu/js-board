@@ -3,7 +3,7 @@ import { Layout } from '../components/Layout';
 import { Tabs } from '../components/Tabs';
 import { developmentBoardData, designBoardData } from '../util/dummyData';
 
-export const HomePage = (activeTab) => {
+export const HomePage = (activeTab, router) => {
     const getPosts = () => {
         if (activeTab === '/development') {
             return developmentBoardData;
@@ -62,6 +62,10 @@ export const HomePage = (activeTab) => {
       </div>
     `;
 
+    const moveArticle = (postId) => {
+        router.navigateTo(`/article/${postId}`);
+    };
+
     setTimeout(() => {
         document.querySelectorAll('.post').forEach((postElement, index) => {
             const postId = posts[index].id;
@@ -84,7 +88,3 @@ export const HomePage = (activeTab) => {
 //         });
 //     });
 // });
-
-const moveArticle = (postId) => {
-    console.log(`Clicked post with ID: ${postId}`);
-};
