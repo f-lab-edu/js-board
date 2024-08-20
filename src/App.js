@@ -1,10 +1,6 @@
 import createRouter from './router.js';
-import { Header, attachHeaderEvents } from './components/Header.js';
-import { Footer } from './components/Footer.js';
-import { HomePage } from './pages/HomePage.js';
-import { MyPage } from './pages/MyPage.js';
-import { NotFoundPage } from './pages/NotFoundPage.js';
-import { ArticlePage } from './pages/ArticlePage.js';
+import { Header, Footer, attachHeaderEvents } from './components/index';
+import { HomePage, MyPage, NotFoundPage, ArticlePage } from './pages/index';
 
 //라우터 관련 코드 작성
 const routes = {
