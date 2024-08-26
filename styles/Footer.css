@@ -1,0 +1,39 @@
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+    font-size: 12px;
+}
+
+footer a {
+    color: #ffdd57;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+}
+
+footer a i {
+    margin-right: 8px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+@media (min-width: 900px) {
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+}
+
+@media (max-width: 599px) {
+}

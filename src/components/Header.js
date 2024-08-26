@@ -1,9 +1,9 @@
 import '../../styles/Header.css';
 
-export const Header = () => {
-  return `
+export const Header = (router) => {
+    return `
     <header>
-      <h1>toss tech</h1>
+      <h1 class="logo">toss tech</h1>
       <nav>
         <a href="/" data-link>SLASH</a>
         <a href="/mypage" data-link>SIMPLICITY</a>
@@ -12,4 +12,11 @@ export const Header = () => {
       </nav>
     </header>
   `;
+};
+
+export const attachHeaderEvents = (router) => {
+    document.querySelector('.logo').addEventListener('click', (e) => {
+        e.preventDefault();
+        router.navigateTo('/');
+    });
 };

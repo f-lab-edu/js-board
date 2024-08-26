@@ -1,20 +1,54 @@
 .homeContainer {
-  width: 1200px;
-  min-height: 100vh;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
+    width: 1200px;
+    min-height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
 }
 .homeContent {
-  padding: 0 24px;
-  text-align: center;
+    padding: 0 24px;
+    text-align: center;
 }
 h2 {
-  width: 1010px;
-  background-color: #000;
-  color: #fff;
-  padding: 50px 20px;
-  border-radius: 10px;
+    width: 1010px;
+    background-color: #000;
+    color: #fff;
+    padding: 50px 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+}
+
+.post {
+    text-align: left;
+    cursor: pointer;
+    margin: 50px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.post p {
+    color: #4e5968;
+    font-size: 15px;
+    font-weight: 400;
+}
+.post small {
+    color: #4e5968;
+    font-size: 12px;
+    font-weight: 400;
+}
+.post:hover h3 {
+    color: #007bff;
+}
+.imgDiv {
+    flex-shrink: 0;
+    margin-left: 20px;
+}
+
+.imgDiv img {
+    width: 150px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
 }
 @media (min-width: 900px) {
 }

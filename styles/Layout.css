@@ -1,18 +1,19 @@
 .layoutContainer {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .layoutLeft {
-  flex: 7;
-  padding: 0 24px;
+    flex: 7;
+    padding: 0 24px;
 }
 
 .layoutRight {
-  flex: 3;
-  padding: 0 24px;
+    flex: 3;
+    padding: 0 24px;
+    border-left: 1px solid #e5e8eb;
 }
 
 @media (min-width: 900px) {
