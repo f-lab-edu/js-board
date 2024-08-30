@@ -1,5 +1,18 @@
-export default function createRouter(routes) {
-    const checkRoutes = (path) => {
+type Component = (props?: any) => string;
+// type Route = Record<string, Component | Route>;
+// type ComponentMap = Record<string | 'render', Component>;
+type HomeComponent = {
+    header: Component;
+    footer: Component;
+    render: Component;
+    attachHeaderEvents: () => void;
+};
+type Route = {
+    [key: string]: HomeComponent | Component;
+};
+
+export default function createRouter(routes: Route) {
+    const checkRoutes = (path: string): Component => {
         for (const route in routes) {
             const routeRegex = new RegExp(`^${route.replace(/:\w+/g, '(\\w+)')}$`);
             const match = path.match(routeRegex);
@@ -9,16 +22,17 @@ export default function createRouter(routes) {
                 if (typeof routeConfig === 'function') {
                     return () => routeConfig(param);
                 } else {
+                    //HomeComponent
                     return () => routeConfig.render(param);
                 }
             }
         }
-        return routes['/404'];
+        return routes['/404'] as Component;
     };
 
-    const navigateTo = (url) => {
+    const navigateTo = (url: string) => {
         if (window.location.pathname !== url) {
-            history.pushState(null, null, url);
+            history.pushState(null, '', url);
             window.dispatchEvent(new Event('popstate'));
         }
     };
@@ -27,28 +41,30 @@ export default function createRouter(routes) {
         const path = window.location.pathname;
         const viewFunction = checkRoutes(path);
         const isDefinedRoute = routes.hasOwnProperty(path);
+        const Home = routes['/'] as HomeComponent;
 
         const content = isDefinedRoute
             ? `
-            ${routes['/'].header()}
+            ${Home.header()}
             ${viewFunction()}
-            ${routes['/'].footer()}
+            ${Home.footer()}
         `
             : viewFunction();
 
         const container = document.getElementById('app');
-        container.innerHTML = content;
-        routes['/'].attachHeaderEvents();
+        container!.innerHTML = content;
+        Home.attachHeaderEvents();
     };
+    //const isAnchor = (el: HTMLElement): el is HTMLAnchorElement => Boolean(el.matches('[data-link]'));
 
     const init = () => {
         document.addEventListener('DOMContentLoaded', () => {
             renderPage();
 
             document.body.addEventListener('click', (e) => {
-                if (e.target.matches('[data-link]')) {
+                if ((e.target as HTMLElement).matches('[data-link]')) {
                     e.preventDefault();
-                    navigateTo(e.target.href);
+                    navigateTo((e.target as HTMLAnchorElement).href);
                 }
             });
         });

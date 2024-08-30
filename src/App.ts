@@ -1,4 +1,4 @@
-import createRouter from './router.js';
+import createRouter from './router';
 import { Header, Footer, attachHeaderEvents } from './components/index';
 import { HomePage, MyPage, NotFoundPage, ArticlePage } from './pages/index';
 
