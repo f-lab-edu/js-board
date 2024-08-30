@@ -1,7 +1,7 @@
 import '../../styles/HomePage.css';
 import { Layout } from '../components/Layout';
 import { Tabs } from '../components/Tabs';
-import { developmentBoardData, designBoardData } from '../util/dummyData';
+import { developmentBoardData, designBoardData, popularPosts, recentComments } from '../util/dummyData';
 
 export const HomePage = (activeTab, router) => {
     const getPosts = () => {
@@ -39,6 +39,34 @@ export const HomePage = (activeTab, router) => {
 
     const message = messageMap[activeTab] ?? '디자인 관련 게시글이 여기에 표시됩니다.';
 
+    const popularPostList = popularPosts
+        .map(
+            (post) => `
+      <div class="popularPost" data-id="${post.id}">
+        <p>${post.title}</p>
+        <small>${post.author}</small>
+      </div>
+    `
+        )
+        .join(' ');
+
+    const recentCommentList = recentComments
+        .map(
+            (comment) => `
+      <div class="recentComment" data-id="${comment.postId}">
+        <div class="commentProfile">
+          <img src="${comment.profileImage}" alt="${comment.nickname}" />
+          <p>${comment.nickname}</p>
+        </div>
+        <div class="commentContent">
+          <p>${comment.content}</p>
+          <small>${comment.postTitle}</small>
+        </div>
+      </div>
+    `
+        )
+        .join(' ');
+
     const leftContent = `
       ${Tabs(activeTab)}
       <div class="homeContent">
@@ -49,7 +77,14 @@ export const HomePage = (activeTab, router) => {
 
     const rightContent = `
       <div class="homeSidebar">
-        <p>여기에 사이드바 내용이 옵니다.</p>
+        <p class="sideSubTitle">인기있는 글</p>
+        <div class="popularPosts">
+          ${popularPostList}
+        </div>
+        <p class="sideSubTitle">최근 댓글</p>
+        <div class="recentComments">
+          ${recentCommentList}
+        </div>
       </div>
     `;
 
@@ -69,7 +104,21 @@ export const HomePage = (activeTab, router) => {
     setTimeout(() => {
         document.querySelectorAll('.post').forEach((postElement, index) => {
             const postId = posts[index].id;
-            postElement.addEventListener('click', (e) => {
+            postElement.addEventListener('click', () => {
+                moveArticle(postId);
+            });
+        });
+
+        document.querySelectorAll('.popularPost').forEach((postElement) => {
+            const postId = postElement.getAttribute('data-id');
+            postElement.addEventListener('click', () => {
+                moveArticle(postId);
+            });
+        });
+
+        document.querySelectorAll('.recentComment').forEach((commentElement) => {
+            const postId = commentElement.getAttribute('data-id');
+            commentElement.addEventListener('click', () => {
                 moveArticle(postId);
             });
         });
@@ -77,14 +126,3 @@ export const HomePage = (activeTab, router) => {
 
     return content;
 };
-
-// 작동안함
-// document.addEventListener('DOMContentLoaded', () => {
-//     document.querySelectorAll('.post').forEach((postElement) => {
-//         postElement.addEventListener('click', (e) => {
-//             const postId = postElement.getAttribute('data-id');
-//             moveArticle(postId);
-//             console.log('zz');
-//         });
-//     });
-// });
