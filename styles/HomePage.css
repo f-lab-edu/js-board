@@ -50,6 +50,89 @@ h2 {
     object-fit: cover;
     border-radius: 5px;
 }
+
+.sideSubTitle {
+    color: #6b7684;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.popularPosts,
+.recentComments {
+    margin-bottom: 20px;
+}
+
+.popularPost {
+    padding: 15px 0;
+    cursor: pointer;
+}
+
+.popularPost:hover p {
+    color: #007bff;
+}
+
+.popularPost p {
+    margin: 0;
+    font-weight: 600;
+    color: #191f28;
+    font-size: 15px;
+}
+
+.popularPost small {
+    display: block;
+    margin-top: 5px;
+    color: #4e5968;
+}
+
+.recentComment {
+    margin-bottom: 15px;
+    cursor: pointer;
+    padding: 20px;
+}
+
+.recentComment:hover .commentContent small {
+    color: #007bff;
+}
+
+.recentComment:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    background-color: #eee;
+}
+
+.commentProfile {
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.commentProfile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.commentProfile p {
+    margin: 0;
+    font-weight: 700;
+    color: rgb(51, 61, 75);
+    font-size: 13px;
+}
+
+.commentContent p {
+    margin-top: 8px;
+    font-size: 13px;
+    color: rgb(78, 89, 104);
+}
+
+.commentContent small {
+    display: block;
+    margin-top: 5px;
+    font-size: 11px;
+    color: #7f8c8d;
+}
+
 @media (min-width: 900px) {
 }
 
